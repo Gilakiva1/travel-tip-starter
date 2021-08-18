@@ -3,10 +3,18 @@
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
+    savePlace,
 }
 
+
+
+
+
 var gMap;
+var gCurrPlace;
+
+window.gMyLocations = [];
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
@@ -19,14 +27,34 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 zoom: 15
             })
             gMap.addListener("click", (mapsMouseEvent) =>{
+                console.log(mapsMouseEvent);
                 var lat = mapsMouseEvent.latLng.lat();
                 var lng = mapsMouseEvent.latLng.lng();
-            
-                addMarker({lat,lng})
+                gCurrPlace = {
+                    pos:{lat,lng}
+                }
+                // addLocation({lat,lng})
             })
-            
-            console.log('Map!', gMap);
+            // console.log('Map!', gMap);
         })
+}
+
+function addLocation(){
+
+    gMyLocations.push(
+        {
+            position: gCurrPlace.pos,
+            title:gCurrPlace.title
+        }
+    )
+    gCurrPlace.title = '';
+    addMarker(gCurrPlace.pos);
+}
+function savePlace(title){
+    // gCurrTitle = title;
+    gCurrPlace.title = title
+    console.log(gCurrPlace);
+    addLocation();
 }
 
 function addMarker(loc) {
@@ -37,6 +65,7 @@ function addMarker(loc) {
     });
     return marker;
 }
+
 
 function panTo(lat, lng) {
     var laLatLng = new google.maps.LatLng(lat, lng);
