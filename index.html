@@ -12,19 +12,22 @@
 </head>
 
 <body>
-    <header class="header-cont flex space-betwee align-center">
+    <header class="header-cont flex space-between align-center">
         <h1 class="site-title">TravelTip</h1>
-        <button onclick="onGetUserPos()" class="btn-header btn-user-pos">My Location</button>
-        <button onclick="onAddMarker()" class="btn-header btn-add-marker">Add Location</button>
-        <button onclick="onGetLocs()" class="btn-header btn-get-locs">Get Locations</button>
-        <button onclick="onPanTo()" class="btn-header btn-pan">Tokyo</button>
-    </header>
+        <div>
+
+            <button onclick="onGetUserPos()" class="btn-header btn-user-pos">My Location</button>
+            <button onclick="onAddMarker()" class="btn-header btn-add-marker">Add Location</button>
+            <button onclick="onGetLocs()" class="btn-header btn-get-locs">Get Locations</button>
+            <button onclick="onPanTo()" class="btn-header btn-pan">Tokyo</button>
+        </div>
+        </header>
 
     <main>
         
         <h1>Location: Lorem ipsum dolor.</h1>
         <button>Copy Location</button>
-        <section class="map-container">
+        <section class="map-container flex row-reverse">
 
 
         <div class="map" ></div>

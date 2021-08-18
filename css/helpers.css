@@ -2,6 +2,11 @@
 
 .flex {
     display: flex;
+
+}
+
+.flex.row-reverse{
+    flex-direction:row-reverse;
 }
 
 .flex.space-between {
