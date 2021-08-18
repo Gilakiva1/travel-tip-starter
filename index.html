@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/font.css">
     <link rel="stylesheet" href="./css/helpers.css">
-     <link rel="stylesheet" href="./css/style.css">
-    <title>Travel Tip !!!!</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/add-modal.css">
+    <title>Travel Tip !!!!</title>
 </head>
 
 <body>
@@ -44,12 +44,21 @@
 
     </main>
 
-
-
-
-
-
+    <!-- The Modal -->
+    <section class="add-modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <form onsubmit="onAddLocation(event);">
+                <label for="location-data">Title:</label><br>
+                <input type="text" id="location-data" class="location-data" name="location-data" uluru = ""  value="My Place"><br>
+                <input type="submit" value="Submit">
+            </form> 
+        </div>
+    </section>
+    <!-- <script type="module" src="js/app.controller.js"></script> -->
     <script type="module" src="js/app.controller.js"></script>
+    <script src="./js/controller/add-modal-controller.js"></script>
 </body>
 
 </html>

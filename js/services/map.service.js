@@ -3,10 +3,15 @@
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
+    getMap
 }
 
 var gMap;
+
+function getMap() {
+    return gMap
+}
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
@@ -21,8 +26,8 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
             gMap.addListener("click", (mapsMouseEvent) =>{
                 var lat = mapsMouseEvent.latLng.lat();
                 var lng = mapsMouseEvent.latLng.lng();
-            
-                addMarker({lat,lng})
+                
+                //addMarker({lat,lng})
             })
             
             console.log('Map!', gMap);
