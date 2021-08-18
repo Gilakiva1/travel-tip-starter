@@ -1,5 +1,9 @@
-import { locService } from './services/loc.service.js'
-import { mapService } from './services/map.service.js'
+import {
+    locService
+} from './services/loc.service.js'
+import {
+    mapService
+} from './services/map.service.js'
 
 window.onload = onInit;
 window.onAddMarker = onAddMarker;
@@ -7,6 +11,9 @@ window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 window.onAddLocation = onAddLocation;
+window.onSetTitle = onSetTitle;
+window.onSavePlace = onSavePlace;
+
 
 function onInit() {
     mapService.initMap()
@@ -15,6 +22,19 @@ function onInit() {
         })
         .catch(() => console.log('Error: cannot init map'));
         addListeners()
+    document.querySelector('.map').addEventListener('click', onAddLocation)
+    document.querySelector('.save').addEventListener('click',onSavePlace);
+
+}
+
+function onAddLocation() {
+    document.querySelector('.form-title').hidden = false;
+}
+
+function onSavePlace() {
+    var title = document.querySelector('.title-location').value;
+    mapService.savePlace(title);
+    document.querySelector('.form-title').hidden = true;
 }
 
 function addListeners() {
@@ -42,7 +62,10 @@ function getPosition() {
 
 function onAddMarker() {
     console.log('Adding a marker');
-    mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
+    mapService.addMarker({
+        lat: 32.0749831,
+        lng: 34.9120554
+    });
 }
 
 function onGetLocs() {
@@ -64,6 +87,7 @@ function onGetUserPos() {
             console.log('err!!!', err);
         })
 }
+
 function onPanTo() {
     console.log('Panning the Map');
     mapService.panTo(35.6895, 139.6917);
